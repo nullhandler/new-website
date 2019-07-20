@@ -1,0 +1,56 @@
+/* <-- Body --> */
+body{
+    margin: 0px;
+    font-family: sans-serif;
+}
+/* <-- Navbar --> */
+.header{
+    padding-right: 20%;
+    padding-left: 20%;
+    background: whitesmoke;
+}
+.navbar{
+    padding: 15px 0px;
+    margin: 0px;
+    background: whitesmoke;
+}
+.navbar li{
+    border-radius: 5px;
+    padding: 10px 0px;
+    display: inline;
+    list-style-type: none;
+}
+.navbar li:hover{
+    color: white;
+    background: grey;
+}
+.navbar .nav-right{
+    float: right;
+}
+.navbar a{
+    padding-top: inherit;
+    padding-bottom: inherit;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: inherit;
+    text-decoration-line: none;
+}
+/* <-- main --> */
+.main h1,h2{
+    text-align: center;
+}
+.main {
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+.footer{
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}

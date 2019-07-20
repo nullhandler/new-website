@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>Selva</title>
+        <link rel="stylesheet" href="sample.css">
+    </head>
+    <body>
+        <header id="header">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Blog</a></li>
+        </ul>
+        </header>
+        <div id="content">
+            <h2>Info</h2>
+            <p>hi i am selva, I do all sorts of things. </p>
+        </div>
+        <pre>
+                void main(List<String> args) {
+                    runApp(MultiProvider(
+                        providers: [
+                          ChangeNotifierProvider<SongsModel>(builder: (context) => SongsModel(),),
+                          ChangeNotifierProvider<ThemeChanger>(builder: (context) => ThemeChanger(LightTheme()))
+                        ],
+                        child: MyApp()));
+                  }
+                  
+                  class MyApp extends StatelessWidget {
+                    @override
+                    Widget build(BuildContext context) {
+                      ThemeChanger theme = Provider.of<ThemeChanger>(context);
+                      return new MaterialApp(
+                          home: new Splash(),
+                          theme: theme.getTheme(),
+                          debugShowCheckedModeBanner: false,
+                        );
+                    }
+                  }
+                  
+                  class Splash extends StatefulWidget {
+                    @override
+                    SplashState createState() => new SplashState();
+                  }
+                  
+                  class SplashState extends State<Splash> {
+                    @override
+                    Widget build(BuildContext context) {
+                      return new Scaffold(
+                        body: new Center(
+                          child: new Text('Loading...'),
+                        ),
+                      );
+                    }
+                  
+                    Future checkFirstSeen() async {
+                      SharedPreferences prefs = await SharedPreferences.getInstance();
+                      bool _seen = (prefs.getBool('seen') ?? false);
+                  
+                      if (_seen) {
+                        Navigator.of(context).pushReplacement(
+                            new MaterialPageRoute(builder: (context) => new MainScreen()));
+                      } else {
+                        SystemChrome.setEnabledSystemUIOverlays([]);
+                        prefs.setBool('seen', true);
+                        Navigator.of(context).pushReplacement(
+                            new MaterialPageRoute(builder: (context) => new OnBoarding()));
+                      }
+                    }
+                  
+                    @override
+                    void initState() {
+                      super.initState();
+                      checkFirstSeen();
+                    }
+                  }
+                  
+                </pre>
+    </body>
+</html>
